@@ -19,7 +19,7 @@ class Property extends Model
         'rooms',
         'baths',
         'description',
-        'city_zip',
+        'city_id',
         'agent_id',
     ];
 
@@ -30,7 +30,7 @@ class Property extends Model
 
     public function city()
     {
-        return $this->belongsTo(City::class, 'zip');
+        return $this->belongsTo(City::class);
     }
 
     public function agent()

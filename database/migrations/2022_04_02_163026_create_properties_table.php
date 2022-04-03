@@ -24,10 +24,10 @@ return new class extends Migration
             $table->unsignedInteger('baths');
             $table->string('description');
             $table->timestamps();
-            $table->string('city_zip'); //Foreign key
+            $table->unsignedBigInteger('city_id'); //Foreign key
             $table->unsignedBigInteger('agent_id'); //Foreign key
 
-            $table->foreign('city_zip')->references('zip')->on('cities')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('agent_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

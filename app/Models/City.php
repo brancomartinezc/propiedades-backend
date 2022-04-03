@@ -9,13 +9,10 @@ class City extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'zip';
-
     protected $fillable = [
-        'zip',
-        'country',
-        'state',
         'name',
+        'state',
+        'country',
     ];
 
     public function properties()
