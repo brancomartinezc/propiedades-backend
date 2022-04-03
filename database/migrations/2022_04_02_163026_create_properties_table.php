@@ -17,12 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('type');
             $table->string('address');
+            $table->unsignedInteger('area');
             $table->unsignedInteger('price');
             $table->boolean('for_sale');
             $table->unsignedInteger('beds');
             $table->unsignedInteger('rooms');
             $table->unsignedInteger('baths');
-            $table->string('description');
+            $table->string('description', 5000);
             $table->timestamps();
             $table->unsignedBigInteger('city_id'); //Foreign key
             $table->unsignedBigInteger('agent_id'); //Foreign key

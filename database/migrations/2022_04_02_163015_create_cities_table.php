@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('state');
             $table->string('country');
-            $table->timestamps();
         });
     }
 
