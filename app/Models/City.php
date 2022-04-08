@@ -13,6 +13,7 @@ class City extends Model
         'name',
         'state',
         'country',
+        'country_code',
     ];
 
     public function properties()
