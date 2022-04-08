@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('address');
             $table->unsignedInteger('area');
             $table->unsignedInteger('price');
-            $table->boolean('for_sale');
+            $table->string('sale_rent', 10);
             $table->unsignedInteger('beds');
             $table->unsignedInteger('rooms');
             $table->unsignedInteger('baths');

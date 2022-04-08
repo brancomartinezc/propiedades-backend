@@ -14,7 +14,7 @@ class Property extends Model
         'address',
         'area',
         'price',
-        'for_sale',
+        'sale_rent',
         'beds',
         'rooms',
         'baths',
