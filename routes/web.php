@@ -14,8 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::resource('properties', 'App\Http\Controllers\PropertyController');
+
+Route::resource('cities', 'App\Http\Controllers\CityController');
+
+Route::resource('users', 'App\Http\Controllers\UserController');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

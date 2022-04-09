@@ -16,7 +16,24 @@ class CitySeeder extends Seeder
     public function run()
     {
         DB::table('cities')->insert([
-            'name' => 'New York'
+            'name' => 'New York',
+            'state' => 'New York',
+            'country' => 'United States of America',
+            'country_code' => 'US'
+        ]);
+
+        DB::table('cities')->insert([
+            'name' => 'Los Angeles',
+            'state' => 'California',
+            'country' => 'United States of America',
+            'country_code' => 'US'
+        ]);
+
+        DB::table('cities')->insert([
+            'name' => 'Toronto',
+            'state' => 'Ontario',
+            'country' => 'Canada',
+            'country_code' => 'CA',
         ]);
     }
 }
