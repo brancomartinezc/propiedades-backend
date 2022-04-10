@@ -2,7 +2,11 @@
 
 @section('content')
 
-<table class="table table-hover mt-5">
+<div class="row justify-content-end mt-5">
+    <div class="col-md-2"><a class="btn btn-warning rounded-0" href="#">Add new</a></div> 
+</div>
+
+<table class="table table-hover mt-3">
     <thead>
         <tr class="table-dark">
             <th scope="col">ID</th>
@@ -33,5 +37,7 @@
         @endforeach
     </tbody>
 </table>
+
+{{ $properties->links() }}
 
 @endsection

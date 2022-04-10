@@ -20,7 +20,7 @@ class PropertyController extends Controller
         $properties = DB::table('properties')
             ->join('cities', 'properties.city_id', '=', 'cities.id')
             ->select('properties.*','cities.name as city_name','cities.state as city_state','cities.country_code as city_country_code')
-            ->get();
+            ->paginate(10);
 
         return view('properties.index')->with('properties',$properties);
     }
