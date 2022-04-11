@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row justify-content-end mt-5">
-    <div class="col-md-2"><a class="btn btn-warning rounded-0" href="#">Add new</a></div> 
+    <div class="col-md-2"><a class="btn btn-warning rounded-0" href="{{ url("/cities/create") }}">Add new</a></div> 
 </div>
 
 <table class="table table-hover mt-3">
@@ -25,8 +25,12 @@
             <td>{{$city->state}}</td>
             <td>{{$city->country}}</td>
             <td>
-                <a class="btn btn-success rounded-0" href="#">Edit</a>
-                <a class="btn btn-danger rounded-0" href="#">Delete</a>
+                <form method="POST" action="{{ route ('cities.destroy',$city->id) }}">
+                    <a class="btn btn-success rounded-0" href="{{ url("/cities/{$city->id}/edit") }}">Edit</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger rounded-0">Delete</button>
+                </form>
             </td>
         </tr>
         @endforeach

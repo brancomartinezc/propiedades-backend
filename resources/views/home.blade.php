@@ -2,8 +2,7 @@
 
 @section('content')
 
-    <!-- <div class="row justify-content-center mt-5" id="welcome">UNITED REAL ESTATE</div> -->
-    <div class="row justify-content-center mt-5"><img src="https://i.ibb.co/WcmGx37/united2.png" alt="united2" id="united-logo"></div>
+    <div class="row justify-content-center mt-5"><img src="https://i.ibb.co/WcmGx37/united2.png" alt="company logo" id="united-logo"></div>
     <div class="row justify-content-center mt-5" id="welcome">Welcome to the web administration!</div>
 
     <div class="row justify-content-center mt-5">

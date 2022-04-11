@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\City;
+use Carbon\Carbon;
 
 class CityController extends Controller
 {
@@ -26,7 +27,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        return view('cities.create');
     }
 
     /**
@@ -37,7 +38,17 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $city = new City();
+
+        $city->name = $request->get('name');
+        $city->state = $request->get('state');
+        $city->country = $request->get('country');
+        $city->country_code = $request->get('country_code');
+        $city->timestamps=false;
+
+        $city->save();
+
+        return redirect('/cities');
     }
 
     /**
@@ -59,7 +70,9 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $city = City::find($id);
+
+        return view('cities.edit')->with('city',$city);
     }
 
     /**
@@ -71,7 +84,17 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $city = City::find($id);
+
+        $city->name = $request->get('name');
+        $city->state = $request->get('state');
+        $city->country = $request->get('country');
+        $city->country_code = $request->get('country_code');
+        $city->timestamps=false;
+
+        $city->save();
+
+        return redirect('/cities');
     }
 
     /**
@@ -82,6 +105,10 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $city = City::find($id);
+        
+        $city->delete();
+
+        return redirect('/cities');
     }
 }

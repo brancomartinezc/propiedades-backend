@@ -19,10 +19,14 @@
             <td>{{$user->id}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
-            <td>{{$user->rol}}</td>
+            <td>{{$user->role}}</td>
             <td>
-                <a class="btn btn-success rounded-0" href="#">Change Role</a>
-                <a class="btn btn-danger rounded-0" href="#">Delete</a>
+                <form method="POST" action="{{ route ('users.destroy',$user->id) }}">
+                    <a class="btn btn-success rounded-0" href="{{ url("/users/{$user->id}/edit") }}">Change Role</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger rounded-0">Delete</button>
+                </form>
             </td>
         </tr>
         @endforeach
