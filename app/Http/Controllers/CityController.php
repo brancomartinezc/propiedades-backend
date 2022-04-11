@@ -15,7 +15,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $cities = City::paginate(10);
+        $cities = City::orderBy('id', 'asc')->paginate(10);
 
         return view('cities.index')->with('cities',$cities);
     }
@@ -106,7 +106,7 @@ class CityController extends Controller
     public function destroy($id)
     {
         $city = City::find($id);
-        
+
         $city->delete();
 
         return redirect('/cities');

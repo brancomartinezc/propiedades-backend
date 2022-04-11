@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\City;
 use App\Models\User;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PropertyController extends Controller
 {
@@ -20,6 +22,7 @@ class PropertyController extends Controller
         $properties = DB::table('properties')
             ->join('cities', 'properties.city_id', '=', 'cities.id')
             ->select('properties.*','cities.name as city_name','cities.state as city_state','cities.country_code as city_country_code')
+            ->orderBy('id', 'asc')
             ->paginate(10);
 
         return view('properties.index')->with('properties',$properties);
@@ -32,7 +35,9 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        //
+        $cities = City::all();
+
+        return view('properties.create')->with('cities',$cities);
     }
 
     /**
@@ -43,7 +48,23 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $property = new Property();
+
+        $property->address = $request->get('address');
+        $property->type = $request->get('type');
+        $property->area = $request->get('area');
+        $property->price = $request->get('price');
+        $property->sale_rent = $request->get('sale_rent');
+        $property->rooms = $request->get('rooms');
+        $property->beds = $request->get('beds');
+        $property->baths = $request->get('baths');
+        $property->description = $request->get('description');
+        $property->city_id = $request->get('city_id');
+        $property->agent_id = Auth::id();
+
+        $property->save();
+
+        return redirect('/properties');
     }
 
     /**
@@ -72,7 +93,12 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $property = Property::find($id);
+        $cities = City::all();
+
+        return view('properties.edit')
+            ->with('property',$property)
+            ->with('cities',$cities);
     }
 
     /**
@@ -84,7 +110,22 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $property = Property::find($id);
+
+        $property->address = $request->get('address');
+        $property->type = $request->get('type');
+        $property->area = $request->get('area');
+        $property->price = $request->get('price');
+        $property->sale_rent = $request->get('sale_rent');
+        $property->rooms = $request->get('rooms');
+        $property->beds = $request->get('beds');
+        $property->baths = $request->get('baths');
+        $property->description = $request->get('description');
+        $property->city_id = $request->get('city_id');
+
+        $property->save();
+
+        return redirect('/properties');
     }
 
     /**
@@ -95,6 +136,10 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $property = Property::find($id);
+
+        $property->delete();
+
+        return redirect('/properties');
     }
 }
