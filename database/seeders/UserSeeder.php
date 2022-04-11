@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('1234'),
             'remember_token' => 'abcd',
-            'rol' => 'admin',
+            'role' => 'admin',
         ]);
 
         DB::table('users')->insert([
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('1234'),
             'remember_token' => 'abcd',
-            'rol' => 'agent',
+            'role' => 'agent',
         ]);
     }
 }
