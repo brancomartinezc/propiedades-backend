@@ -2,6 +2,18 @@
 
 @section('content')
 
+<div class="row mt-4">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+</div>
+
 <div class="row justify-content-center">
     <div class="col-md-5">
         <div class="card border-dark mb-3 mt-5 rounded-0">
@@ -19,25 +31,29 @@
                             <label for="" class="form-label">Select new role</label>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="role" value="user">
+                                    <input type="radio" class="form-check-input" name="role" value="user"
+                                    {{ ($user->role == "user") ? "checked" : "" }}>
                                     User
                                 </label>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="role" value="agent">
+                                    <input type="radio" class="form-check-input" name="role" value="agent"
+                                    {{ ($user->role == "agent") ? "checked" : "" }}>
                                     Agent
                                 </label>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="role" value="chief-agent">
+                                    <input type="radio" class="form-check-input" name="role" value="chief-agent"
+                                    {{ ($user->role == "chief-agent") ? "checked" : "" }}>
                                     Chief Agent
                                 </label>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="role" value="admin">
+                                    <input type="radio" class="form-check-input" name="role" value="admin"
+                                    {{ ($user->role == "admin") ? "checked" : "" }}>
                                     Admin
                                 </label>
                             </div>

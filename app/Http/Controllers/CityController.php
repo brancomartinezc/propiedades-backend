@@ -38,6 +38,13 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+            'state' => 'required|max:255',
+            'country' => 'required|max:255',
+            'country_code' => 'required|max:255',
+        ]);
+
         $city = new City();
 
         $city->name = $request->get('name');
@@ -84,6 +91,13 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+            'state' => 'required|max:255',
+            'country' => 'required|max:255',
+            'country_code' => 'required|max:255',
+        ]);
+
         $city = City::find($id);
 
         $city->name = $request->get('name');

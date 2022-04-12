@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('address');
             $table->unsignedInteger('area');
             $table->unsignedInteger('price');
-            $table->string('sale_rent', 10);
+            $table->string('sale_rent');
             $table->unsignedInteger('beds');
             $table->unsignedInteger('rooms');
             $table->unsignedInteger('baths');
-            $table->string('description', 5000);
+            $table->string('description', 5000)->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('city_id'); //Foreign key
             $table->unsignedBigInteger('agent_id'); //Foreign key

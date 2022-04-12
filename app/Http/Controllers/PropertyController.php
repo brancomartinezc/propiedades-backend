@@ -48,6 +48,18 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'address' => 'required|max:255',
+            'type' => 'required',
+            'area' => 'required|integer',
+            'price' => 'required|integer',
+            'sale_rent' => 'required',
+            'rooms' => 'required|integer',
+            'beds' => 'required|integer',
+            'baths' => 'required|integer',
+            'descrption' => 'nullable|max:5000',
+        ]);
+
         $property = new Property();
 
         $property->address = $request->get('address');
@@ -110,6 +122,18 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'address' => 'required|max:255',
+            'type' => 'required',
+            'area' => 'required|integer',
+            'price' => 'required|integer',
+            'sale_rent' => 'required',
+            'rooms' => 'required|integer',
+            'beds' => 'required|integer',
+            'baths' => 'required|integer',
+            'descrption' => 'nullable|max:5000',
+        ]);
+
         $property = Property::find($id);
 
         $property->address = $request->get('address');

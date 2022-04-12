@@ -2,6 +2,18 @@
 
 @section('content')
 
+<div class="row mt-4">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+</div>
+
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card border-dark mb-3 mt-5 rounded-0">
@@ -39,7 +51,7 @@
                             </label>
                         </div>
                         
-                        <label for="" class="form-label">Area</label>
+                        <label for="" class="form-label">Area (m2)</label>
                         <input type="text" name="area" class="form-control rounded-0" value="{{$property->area}}">
                         <label for="" class="form-label">Price (U$D)</label>
                         <input type="text" name="price" class="form-control rounded-0" value="{{$property->price}}">

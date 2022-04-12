@@ -2,6 +2,18 @@
 
 @section('content')
 
+<div class="row mt-4">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+</div>
+
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card border-dark mb-3 mt-5 rounded-0">
@@ -13,10 +25,10 @@
                     <div class="form-group">
                         @csrf
                         <label for="" class="form-label">Address</label>
-                        <input type="text" name="address" class="form-control rounded-0">
+                        <input type="text" name="address" class="form-control rounded-0" value="{{ old('address') }}">
 
                         <label for="" class="form-label">City ↓</label>
-                        <select name="city_id" class="form-control rounded-0">
+                        <select name="city_id" class="form-control rounded-0" value="{{ old('city_id') }}">
                             @foreach ($cities as $city)
                             <option value="{{$city->id}}">{{$city->name}}, {{$city->state}}, {{$city->country_code}} </option>
                             @endforeach
@@ -36,10 +48,10 @@
                             </label>
                         </div>
                         
-                        <label for="" class="form-label">Area</label>
-                        <input type="text" name="area" class="form-control rounded-0">
+                        <label for="" class="form-label">Area (m2)</label>
+                        <input type="text" name="area" class="form-control rounded-0" value="{{ old('area') }}">
                         <label for="" class="form-label">Price (U$D)</label>
-                        <input type="text" name="price" class="form-control rounded-0">
+                        <input type="text" name="price" class="form-control rounded-0" value="{{ old('price') }}">
 
                         <label for="" class="form-label">For</label>
                         <div class="form-check">
@@ -56,13 +68,13 @@
                         </div>
                         
                         <label for="" class="form-label">Beds</label>
-                        <input type="text" name="beds" class="form-control rounded-0">
+                        <input type="text" name="beds" class="form-control rounded-0" value="{{ old('beds') }}">
                         <label for="" class="form-label">Rooms</label>
-                        <input type="text" name="rooms" class="form-control rounded-0">
+                        <input type="text" name="rooms" class="form-control rounded-0" value="{{ old('rooms') }}">
                         <label for="" class="form-label">Baths</label>
-                        <input type="text" name="baths" class="form-control rounded-0">
+                        <input type="text" name="baths" class="form-control rounded-0" value="{{ old('baths') }}">
                         <label for="" class="form-label">Description</label>
-                        <textarea type="text" name="description" class="form-control rounded-0" rows="10"></textarea>
+                        <textarea type="text" name="description" class="form-control rounded-0" rows="10">{{ old('description') }}</textarea>
                     </div>
 
                     <div class="row mt-4">
