@@ -15,6 +15,7 @@
             <th scope="col">Address</th>
             <th scope="col">Sale/Rent</th>
             <th scope="col">Agent ID</th>
+            <th scope="col">Photos</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -28,6 +29,7 @@
             <td>{{$prop->address}}</td>
             <td>{{$prop->sale_rent}}</td>
             <td>{{$prop->agent_id}}</td>
+            <td><a class="btn btn-primary rounded-0" href="{{ url("/properties/{$prop->id}/photos") }}">View</a></td>
             <td>
                 <form method="POST" action="{{ route ('properties.destroy',$prop->id) }}">
                     <a class="btn btn-primary rounded-0" href="{{ url("/properties/{$prop->id}") }}">More info</a>

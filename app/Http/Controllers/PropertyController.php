@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\City;
 use App\Models\User;
+use App\Models\Photo;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -165,5 +166,15 @@ class PropertyController extends Controller
         $property->delete();
 
         return redirect('/properties');
+    }
+
+    public function photos($id){
+
+        $property = Property::find($id);
+        $photos = Photo::where('property_id',$id)->get();
+
+        return view('properties.photos')
+            ->with('property',$property)
+            ->with('photos',$photos);
     }
 }

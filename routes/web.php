@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PropertyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::resource('properties', 'App\Http\Controllers\PropertyController');
 Route::resource('cities', 'App\Http\Controllers\CityController');
 
 Route::resource('users', 'App\Http\Controllers\UserController');
+
+Route::resource('photos', 'App\Http\Controllers\PhotoController');
+
+Route::get('/properties/{id}/photos', [PropertyController::class,'photos']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
