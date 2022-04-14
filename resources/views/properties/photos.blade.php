@@ -1,5 +1,7 @@
 @extends('layouts.base')
+
 @section('content')
+
     <div class="row mt-4">
         <h2>Property Nº {{$property->id}}</h2>
     </div>
