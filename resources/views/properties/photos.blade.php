@@ -14,9 +14,9 @@
         <form method="POST" action="{{ url('/photos') }}" enctype="multipart/form-data">
             @csrf
             <div class="col-md-5 form-group">
-                <label for="files" class="form-label">Upload property photos</label>
-                <input type="file" name="photos[]" class="form-control rounded-0" multiple>
-                <input type="hidden" name="prop_id" class="form-control rounded-0" accept="image/*" value="{{ $property->id }}">
+                <label for="files" class="form-label">Upload photos of the property</label>
+                <input type="file" name="photos[]" class="form-control rounded-0" accept="image/*" multiple>
+                <input type="hidden" name="prop_id" class="form-control rounded-0" value="{{ $property->id }}">
             </div>
             <div class="col-md-2 mt-2">
                 <button type="submit" class="btn btn-primary rounded-0">Upload</button>
@@ -35,12 +35,12 @@
                 <form method="POST" action="{{ route ('photos.destroy',$photo->id) }}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger rounded-0">Delete</button>
+                    <button type="submit" class="btn btn-danger btn-sm rounded-0">Delete</button>
                 </form>
             </div>
             
         @empty
-            <div class="col-md-3"> No photos yet. </div>
+            <div class="col-md-3"> There are no photos yet. </div>
         @endforelse
     </div>
 
