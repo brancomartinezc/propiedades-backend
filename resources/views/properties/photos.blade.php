@@ -29,7 +29,7 @@
             <div class="col-md-3 mb-2">
                 <div class="card mb-3" id="photo-prop">
                     <div class="card-body">
-                        <img src="/properties_images/{{$photo->path}}" class="card-img-top">
+                        <img src="{{$photo->path}}" class="card-img-top">
                     </div>
                 </div>
                 <form method="POST" action="{{ route ('photos.destroy',$photo->id) }}">

@@ -162,6 +162,11 @@ class PropertyController extends Controller
     public function destroy($id)
     {
         $property = Property::find($id);
+        $photos = Photo::where('property_id',$id)->get();
+
+        foreach($photos as $photo){
+            Photo::destroy($photo->id);
+        }
 
         $property->delete();
 

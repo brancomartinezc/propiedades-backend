@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Photo;
 use Illuminate\Support\Facades\File;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class PhotoController extends Controller
 {
@@ -40,19 +41,17 @@ class PhotoController extends Controller
 
         if($request->has('photos')){
             $photos = $request->file('photos');
-            $photo_number = 1;
             
             foreach($photos as $photo){
-                $imageName = 'property-'.$prop_id.'-photo-'.$photo_number.'-'.time().'.'.$photo->extension();
-                $photo->move(public_path('properties_images'),$imageName);
+
+                $result = $photo->storeOnCloudinary('properties');
 
                 $photo_db = new Photo();
-                $photo_db->path = $imageName;
+                $photo_db->path = $result->getSecurePath();
+                $photo_db->external_id = $result->getPublicId();
                 $photo_db->property_id = $prop_id;
                 $photo_db->timestamps=false;
                 $photo_db->save();
-
-                $photo_number++;
             }
 
         }
@@ -104,11 +103,8 @@ class PhotoController extends Controller
     {
         $photo = Photo::find($id);
         $prop_id = $photo->property_id;
-        $photo_path = 'properties_images/'.$photo->path;
 
-        if(File::exists($photo_path)){
-            File::delete($photo_path);
-        }
+        Cloudinary::destroy($photo->external_id);
 
         $photo->delete();
 
