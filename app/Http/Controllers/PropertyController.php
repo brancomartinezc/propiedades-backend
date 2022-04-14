@@ -10,6 +10,7 @@ use App\Models\Photo;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PhotoController;
 
 class PropertyController extends Controller
 {
@@ -165,7 +166,7 @@ class PropertyController extends Controller
         $photos = Photo::where('property_id',$id)->get();
 
         foreach($photos as $photo){
-            Photo::destroy($photo->id);
+            (new PhotoController)->destroy($photo->id);
         }
 
         $property->delete();
