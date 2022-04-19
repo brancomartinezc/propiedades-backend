@@ -18,17 +18,16 @@ class CanManageThisProperty
      */
     public function handle(Request $request, Closure $next)
     {
-        //EN DESARROLLO
-        /*$user_id = auth()->user()->id;
+        $user_id = auth()->user()->id;
         $user_role = auth()->user()->role;
-        $property = Property::find($request->id);
-        $owner_id = $property->agent_id;
+        $property = Property::find($request->route('property'));
+        $publisher_agent_id = $property->agent_id;
 
-        if($user_id == $owner_id || $user_role == "chief-agent" || $user_role == "admin"){
+        if($user_id == $publisher_agent_id || $user_role == "chief-agent" || $user_role == "admin"){
             return $next($request);
         }else{
-            return Redirect::back()->withErrors(['msg' => 'Not authorized.']);
-        }*/
+            return response()->view('not-authorized');
+        }
 
         return $next($request);
     }
