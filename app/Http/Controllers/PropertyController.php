@@ -16,6 +16,7 @@ class PropertyController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('not-user');
         $this->middleware('property.manage', ['only' => ['edit','update','destroy']]);
     }
 

@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'property.manage' => \App\Http\Middleware\CanManageThisProperty::class,
         'cities.manage' => \App\Http\Middleware\CanManageCities::class,
         'users.manage' => \App\Http\Middleware\CanManageUsers::class,
+        'not-user' => \App\Http\Middleware\IsNotUser::class,
     ];
 }

@@ -10,6 +10,7 @@ class CityController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('not-user');
         $this->middleware('cities.manage', ['except' => ['index']]);
     }
 
