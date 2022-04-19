@@ -7,15 +7,19 @@
 
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url("/cities") }}">Cities</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url("/properties") }}">Properties</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url("/users") }}">Users</a>
-                </li>
+                @if (Auth::user()->role != 'user')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url("/cities") }}">Cities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url("/properties") }}">Properties</a>
+                    </li>
+                @endif
+                @if (Auth::user()->role == 'admin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url("/users") }}">Users</a>
+                    </li>
+                @endif
             </ul>
 
             <form method="POST" action="{{ route('logout') }}">
