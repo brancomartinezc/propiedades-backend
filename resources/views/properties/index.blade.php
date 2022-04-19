@@ -34,7 +34,7 @@
                     <a class="btn btn-success rounded-0" href="{{ url("/properties/{$prop->id}/edit") }}">Edit</a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger rounded-0">Delete</button>
+                    <button type="submit" class="btn btn-danger rounded-0" onclick="return confirm('Are you shure you want to delete?')">Delete</button>
                 </form>
             </td>
         </tr>
