@@ -33,10 +33,12 @@
             <td>
                 <form method="POST" action="{{ route ('properties.destroy',$prop->id) }}">
                     <a class="btn btn-primary rounded-0" href="{{ url("/properties/{$prop->id}") }}">More info</a>
-                    <a class="btn btn-success rounded-0" href="{{ url("/properties/{$prop->id}/edit") }}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger rounded-0">Delete</button>
+                    @if (Auth::user()->id == $prop->agent_id || Auth::user()->role == 'chief-agent' || Auth::user()->role == 'admin')
+                        <a class="btn btn-success rounded-0" href="{{ url("/properties/{$prop->id}/edit") }}">Edit</a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger rounded-0">Delete</button>
+                    @endif
                 </form>
             </td>
         </tr>
