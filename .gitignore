@@ -12,3 +12,9 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/database/seeders/CitySeeder.php
+/database/seeders/DatabaseSeeder.php
+/database/seeders/PhotoSeeder.php
+/database/seeders/PropertySeeder.php
+/database/seeders/UserSeeder.php
+/database/seeders/FavoritesSeeder.php
