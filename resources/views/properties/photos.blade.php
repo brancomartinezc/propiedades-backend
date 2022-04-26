@@ -35,7 +35,7 @@
                 <form method="POST" action="{{ route ('photos.destroy',$photo->id) }}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm rounded-0">Delete</button>
+                    <button type="submit" class="btn btn-danger btn-sm rounded-0" onclick="return confirm('Are you shure you want to delete?')">Delete</button>
                 </form>
             </div>
             
