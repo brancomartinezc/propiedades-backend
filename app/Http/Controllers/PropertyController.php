@@ -57,7 +57,7 @@ class PropertyController extends Controller
             'rooms' => 'required|integer',
             'beds' => 'required|integer',
             'baths' => 'required|integer',
-            'descrption' => 'nullable|max:5000',
+            'description' => 'nullable|max:5000',
         ]);
 
         $property = new Property();
@@ -131,7 +131,7 @@ class PropertyController extends Controller
             'rooms' => 'required|integer',
             'beds' => 'required|integer',
             'baths' => 'required|integer',
-            'descrption' => 'nullable|max:5000',
+            'description' => 'nullable|max:5000',
         ]);
 
         $property = Property::find($id);
