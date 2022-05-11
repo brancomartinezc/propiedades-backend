@@ -32,5 +32,14 @@ class UserSeeder extends Seeder
             'remember_token' => 'abcd',
             'role' => 'agent',
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'chief',
+            'email' => 'chief@chief.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('1234'),
+            'remember_token' => 'abcd',
+            'role' => 'chief-agent',
+        ]);
     }
 }
