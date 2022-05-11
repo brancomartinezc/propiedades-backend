@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\City;
 use App\Models\User;
+use App\Models\Photo;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PhotoController;
 
 class PropertyController extends Controller
 {
@@ -161,9 +163,24 @@ class PropertyController extends Controller
     public function destroy($id)
     {
         $property = Property::find($id);
+        $photos = Photo::where('property_id',$id)->get();
+
+        foreach($photos as $photo){
+            (new PhotoController)->destroy($photo->id);
+        }
 
         $property->delete();
 
         return redirect('/properties');
+    }
+
+    public function photos($id){
+
+        $property = Property::find($id);
+        $photos = Photo::where('property_id',$id)->get();
+
+        return view('properties.photos')
+            ->with('property',$property)
+            ->with('photos',$photos);
     }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->string('path', 500);
+            $table->string('external_id', 500)->nullable();
             $table->unsignedBigInteger('property_id'); //Foreign key
 
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');

@@ -25,7 +25,7 @@ class Property extends Model
 
     public function photos()
     {
-        $this->hasMany(Photo::class);
+        return $this->hasMany(Photo::class);
     }
 
     public function city()

@@ -13,3 +13,7 @@ html {
 #welcome{
   font-size: 30px;
 }
+
+#photo-prop{
+  max-width: 20rem;
+}
