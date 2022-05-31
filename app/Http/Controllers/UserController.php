@@ -7,6 +7,11 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('users.manage');
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -8,6 +8,12 @@ use Carbon\Carbon;
 
 class CityController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('not-user');
+        $this->middleware('cities.manage', ['except' => ['index']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -14,6 +14,12 @@ use App\Http\Controllers\PhotoController;
 
 class PropertyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('not-user');
+        $this->middleware('property.manage', ['only' => ['edit','update','destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

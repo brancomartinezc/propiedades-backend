@@ -15,9 +15,6 @@ class PhotoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('photos')->insert([
-            'path' => 'test.com/path1234',
-            'property_id' => '1'
-        ]);
+        
     }
 }

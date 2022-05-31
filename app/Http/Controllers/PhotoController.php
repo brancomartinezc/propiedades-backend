@@ -9,6 +9,12 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class PhotoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('not-user');
+        $this->middleware('photos.manage');
+    }
+
     /**
      * Display a listing of the resource.
      *
